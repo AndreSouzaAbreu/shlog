@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  padding: 32px 64px;
+}
+
+h1 {
+  text-align: center;
+  margin: 2em 0;
+}
+
+main {
+  text-align: justify;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+blockquote {
+  font-style: italic;
+  margin: 1em 2em;
+  color: #666;
+}
+
+code {
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 1px;
+  background: #eee;
+}
+
+img {
+  margin: 0 auto;
+  display: block;
+}
+
+div.img, div.img p {
+  display: flex;
+  justify-content: space-around;
+}
+
+div.img img {
+  margin: 0;
+}
+
+img.w10, .w10 img  { max-width: 10%; }
+img.w20, .w20 img  { max-width: 20%; }
+img.w30, .w30 img  { max-width: 30%; }
+img.w40, .w40 img  { max-width: 40%; }
+img.w50, .w50 img  { max-width: 50%; }
+img.w60, .w60 img  { max-width: 60%; }
+img.w70, .w70 img  { max-width: 70%; }
+img.w80, .w80 img  { max-width: 80%; }
+img.w90, .w90 img  { max-width: 90%; }
+img.w100, .w100 img { max-width: 100%; }
