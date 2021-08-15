@@ -1,0 +1,6 @@
+node_modules/
+src/*
+public/*
+!public/app.css
+tags
+.env

@@ -12,6 +12,7 @@ body, html {
 
 body {
   padding: 32px 64px;
+  font-size: 18px;
 }
 
 h1 {
@@ -25,6 +26,11 @@ main {
   margin: 0 auto;
 }
 
+ul {
+  list-style-type: square;
+  line-height: 1.5;
+}
+
 blockquote {
   font-style: italic;
   margin: 1em 2em;
@@ -34,8 +40,9 @@ blockquote {
 code {
   border: 1px solid #000;
   border-radius: 4px;
-  padding: 1px;
+  padding: 2px;
   background: #eee;
+  display: block;
 }
 
 img {
