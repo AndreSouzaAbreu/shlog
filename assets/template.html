@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    $if(author)$
+    <meta name="author" content="$author$"/>
+    $endif$
+    <title>$title$</title>
+    <link rel="stylesheet" href="/app.23574a9feab960d829f771b3269bd091.css" type="text/css"/>
+  </head>
+  <body>
+    <main>
+      $if(author)$
+      <b>Autor:</b> $author$.<br>
+      $endif$
+      $if(created_at)$
+      <b>Escrito em</b> $created_at$.<br>
+      $endif$
+      $if(updated_at)$
+      <b>Atualizado em</b> $updated_at$.<br>
+      $endif$
+      $body$ 
+    </main>
+  </body>
+</html>

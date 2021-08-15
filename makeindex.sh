@@ -3,11 +3,8 @@
 SRC_DIR=src
 PUBLIC_DIR=public
 WEBSITE_NAME="ANDRÉ's BLOG"
-
-function throwError() {
-  echo Error $@
-  exit 1
-}
+TITLE_OF_LIST_OF_DIRS="Subfolders in this page:"
+TITLE_OF_LIST_OF_FILES="Articles in this page:"
 
 function capitalize() {
   echo $@ | sed 's/[a-z]/\U&/'
@@ -17,28 +14,18 @@ function uppercase() {
   echo $@ | sed 's/[a-z]/\U&/g'
 }
 
-function getPreamble() {
-  title="$@"
-  cat << EOF
----
-title: ${title}
----
-
-# ${title}
-
-EOF
-}
-
 function getUrlsFromDir() {
   dir=$1
   index=$dir/index.md
 
   subdirs=$(find $dir -maxdepth 1 -type d | wc -l)
-  (( $subdirs > 1 )) && echo -e "Subdiretórios:\n"
+  (( $subdirs > 1 )) && echo -e "${TITLE_OF_LIST_OF_DIRS}\n"
 
   find $dir -maxdepth 1 -type d | sort |
   while read otherdir; do
     [[ "$dir" == "$otherdir" ]] && continue
+    nfiles=$(ls $otherdir | wc -l)
+    (( $nfiles == 0 )) && continue;
     title=$(basename $otherdir)
     title=$(capitalize $title)
     uri=${otherdir#${SRC_DIR}}
@@ -47,7 +34,7 @@ function getUrlsFromDir() {
 
   (( $subdirs > 1 )) && echo;
   files=$(ls $dir/*.md | wc -l)
-  (( $files > 1 )) && echo -e "Artigos:\n"
+  (( $files > 1 )) && echo -e "${TITLE_OF_LIST_OF_FILES}\n"
 
   find $dir -maxdepth 1 -type f -iname "*.md"| sort |
   while read filepath; do
@@ -67,13 +54,15 @@ function getUrlsFromDir() {
 
 function makeIndexes() {
   find ${SRC_DIR} -type d | while read dir; do
+    nfiles=$(ls $dir | wc -l)
+    (( $nfiles == 0 )) && continue;
     title="${WEBSITE_NAME}"
     dir_rel=${dir#${SRC_DIR}}
     if [[ -n $dir_rel ]]; then
       title=$(uppercase $dir_rel | sed 's;/;;')
     fi
     index=$dir/index.md
-    (getPreamble $title; getUrlsFromDir $dir) > $index
+    (echo -ne "# $title\n\n" && getUrlsFromDir $dir) > $index
   done
 }
 

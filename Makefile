@@ -1,25 +1,29 @@
-PUBLIC=public
-SRC=src
+ASSETS_DIR=assets
+PUBLIC_DIR=public
+SRC_DIR=src
 
 build: html format
 
 clean:
-	find ${PUBLIC} -type f -iname "*.html" -delete
-	find ${PUBLIC} -type d
+	-rm -rf ${PUBLIC_DIR}/*
+	find ${SRC_DIR} -type f -iname 'index.md' -delete
 
 format:
-	find ${PUBLIC} -type f -iname "*.html" -exec vim -c "normal gg=G" -c "x" '{}' \;
+	find ${PUBLIC_DIR} -type f -iname "*.html" -exec vim -c "normal gg=G" -c "x" '{}' \;
 
-html: indexes
+html: html_template indexes
 	./makehtml.sh
+
+html_template: assets/app.css
+	./maketemplate.sh
 
 indexes:
 	./makeindex.sh
 
 live:
-	./node_modules/.bin/browser-sync start --server ${PUBLIC} --files ${PUBLIC}
+	./node_modules/.bin/browser-sync start --server ${PUBLIC_DIR} --files ${PUBLIC_DIR}
 
 watch:
-	find ${SRC} -type f | entr make html
+	find ${SRC_DIR} ${ASSETS_DIR} -type f | entr make html
 
-.PHONY: build clean format html indexes live watch
+.PHONY: build clean format html html_template indexes live watch

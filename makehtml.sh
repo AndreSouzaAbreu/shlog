@@ -1,7 +1,7 @@
 #!/bin/sh
 SRC_DIR=src
 PUBLIC_DIR=public
-TEMPLATE_FILE=src/template.html
+TEMPLATE_FILE=./assets/template.html
 
 # find ${SRC_DIR} -type f -iname "*.md" | while read f; do echo f is $f; done
 find ${SRC_DIR} -type f -iname "*.md" |
