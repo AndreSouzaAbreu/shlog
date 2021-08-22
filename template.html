@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src none">
     $if(author)$
     <meta name="author" content="$author$"/>
     $endif$
@@ -12,13 +13,13 @@
   <body>
     <main>
       $if(author)$
-      <b>Autor:</b> $author$.<br>
+      <b>Author:</b> $author$.<br>
       $endif$
       $if(created_at)$
-      <b>Escrito em</b> $created_at$.<br>
+      <b>Written in</b> $created_at$.<br>
       $endif$
       $if(updated_at)$
-      <b>Atualizado em</b> $updated_at$.<br>
+      <b>Updated at</b> $updated_at$.<br>
       $endif$
       $body$ 
     </main>

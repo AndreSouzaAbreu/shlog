@@ -28,7 +28,7 @@ function getUrlsFromDir() {
     (( $nfiles == 0 )) && continue;
     title=$(basename $otherdir)
     title=$(capitalize $title)
-    uri=${otherdir#${SRC_DIR}}
+    uri=${otherdir#${SRC_DIR}}/
     echo "- [$title]($uri)"
   done
 
@@ -59,7 +59,8 @@ function makeIndexes() {
     title="${WEBSITE_NAME}"
     dir_rel=${dir#${SRC_DIR}}
     if [[ -n $dir_rel ]]; then
-      title=$(uppercase $dir_rel | sed 's;/;;')
+      title=$(basename $dir_rel)
+      title=$(uppercase $title | sed 's;/;;')
     fi
     index=$dir/index.md
     (echo -ne "# $title\n\n" && getUrlsFromDir $dir) > $index

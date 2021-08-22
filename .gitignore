@@ -1,3 +1,5 @@
+Makefile2
+assets/storage
 node_modules/
 src/*
 public/*
