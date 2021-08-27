@@ -1,0 +1,19 @@
+version: "2.0"
+
+services:
+  blog:
+    image: static-website
+    container_name: ${CONTAINER_NAME}
+    environment:
+      - VIRTUAL_HOST=${DOMAIN}
+      - VIRTUAL_PORT=8080
+      # - LETSENCRYPT_HOST=${DOMAIN}
+      # - LETSENCRYPT_EMAIL=${EMAIL}
+    restart: unless-stopped
+    volumes:
+      - ${PUBLIC_DIR}:/var/www/html:ro
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}
