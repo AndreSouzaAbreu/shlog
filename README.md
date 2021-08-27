@@ -49,17 +49,17 @@ to view a full list of variables.
 
 #### SRC_DIR
 
-The `src` folder is where the markdown files will be located. It is there
+The src folder is where the markdown files will be located. It is there
 where the writing is done. It defaults to `./src`.
 
 #### PUBLIC_DIR
 
-The `public` folder is where the generated HTML files will be placed. It
+The public folder is where the generated HTML files will be placed. It
 is also the entry for your public blog. It defaults to `./public`,
 
 #### STORAGE_DIR
 
-The `storage` folder is where you store files your blog will be using,
+The storage folder is where you store files your blog will be using,
 such as images, videos, PDFs, and so on. It default to `./public/storage`.
 
 #### ASSETS_DIR
@@ -132,7 +132,7 @@ make serve
 
 Browsersync automatically reload the blog when the current HTML page changes.
 This is useful to see your blog while you make changes in real time. This
-should be used toegether with the `watch` rule, otherwise it is useless.
+should be used together with the `watch` rule, otherwise it is useless.
 
 ```shell
 make live
@@ -154,9 +154,9 @@ make watch
 #### Dynamic templates and CSS
 
 The `CSS_FILE` is the main CSS for the blog. The shell scripts will copy
-this file to the public folder and append its `md5` hash to the filename.
+this file to the public folder and append its `md5` hash to the file name.
 That way, it prevents browsers from loading old versions of the CSS file
-due to cache. The `template` rule will change the template file, as well
+due to cache. The template rule will change the template file, as well
 as any HTML files, to match the correct CSS file.
 
 ```shell
@@ -166,7 +166,7 @@ make template
 **Notice**: You don't need to run this rule because it is executed
 automatically by the other rules.
 
-### Deploy with Docker
+## DEPLOY WITH DOCKER
 
 You can deploy the blog with docker using [my static website
 image](https://gitlab.com/andresouzaabreu/docker-static-website).
@@ -174,6 +174,6 @@ image](https://gitlab.com/andresouzaabreu/docker-static-website).
 If you don't want to use my docker image, then you will have to find another
 docker image or create one yourself.
 
-### LICENSE
+## LICENSE
 
 None. Do whatever you want with this software.
