@@ -1,7 +1,9 @@
 Makefile2
 assets/storage
 node_modules/
+src
 src/*
+public
 public/*
 tags
 .env
