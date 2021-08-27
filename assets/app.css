@@ -38,12 +38,28 @@ blockquote {
   color: #666;
 }
 
+pre {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 6px;
+  overflow: auto;
+  background: #ddd;
+}
+
+pre code {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
 code {
+  display: inline;
   border: 1px solid #000;
   border-radius: 4px;
-  padding: 2px;
-  background: #eee;
-  display: block;
+  padding: 0 4px;
+  background: #ddd;
+  font-size: 80%;
 }
 
 img {
