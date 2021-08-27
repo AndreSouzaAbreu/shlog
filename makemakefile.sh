@@ -2,6 +2,7 @@
 PUBLIC_DIR=public
 SRC_DIR=src
 makefile=Makefile2
+cssfile=assets/app.css
 all=''
 
 echo -e "# automatically generated makefile
@@ -17,7 +18,7 @@ while read sourcefile; do
   outfile=${outfile/\.md/.html}
   echo -n " $outfile" >> $makefile.tmp
   echo -e "${outfile}: ${sourcefile}
-\t./makehtml.sh \$^
+\t./makehtml.sh \$<
 " >> $makefile    
 done
 

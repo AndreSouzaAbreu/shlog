@@ -6,7 +6,7 @@ SRC_DIR=src
 build: html format
 
 clean:
-	-rm -rf ${PUBLIC_DIR}/*
+	find ${PUBLIC_DIR} -not -iname 'storage' -delete
 	find ${SRC_DIR} -type f -iname 'index.md' -delete
 
 format:
@@ -36,6 +36,6 @@ storage:
 	ln -s $$(pwd)/${STORAGE_DIR} ${PUBLIC_DIR}/
 
 watch: html
-	find ${SRC_DIR} ${ASSETS_DIR} -type f | entr make html_files
+	find ${SRC_DIR} ${ASSETS_DIR} -type f | entr make html
 
 .PHONY: build clean format html html_template indexes live watch
