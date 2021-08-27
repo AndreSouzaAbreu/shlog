@@ -1,14 +1,22 @@
 #!/bin/sh
-SRC_DIR=src
-PUBLIC_DIR=public
-TEMPLATE_FILE=./template.html
+source ./.env || exit 1
+
+function trimSlashes()
+{
+  echo $@ | sed 's;/\+$;;' | sed 's;^/\+;;'
+}
 
 function get_outfile()
 {
   srcfile=$1
+
   dir=$(dirname $srcfile)
-  dir=${dir#${SRC_DIR}}
-  destdir=${PUBLIC_DIR}$dir
+  newdir=$dir
+  newdir=$(echo $dir | sed "s;^${SRC_DIR};;")
+  [[ "$newdir" == "$dir" ]] && newdir=$(echo ./$dir | sed "s;^${SRC_DIR};;")
+
+  newdir=$(trimSlashes $newdir)
+  destdir=$(trimSlashes ${PUBLIC_DIR}/$newdir)
   out=$(basename $srcfile)
   out=${out/.md/.html}
   out=$destdir/$out

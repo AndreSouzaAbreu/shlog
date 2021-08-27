@@ -1,10 +1,5 @@
 #!/bin/sh
-
-SRC_DIR=src
-PUBLIC_DIR=public
-WEBSITE_NAME="ANDRÉ's BLOG"
-TITLE_OF_LIST_OF_DIRS="Subfolders in this page:"
-TITLE_OF_LIST_OF_FILES="Articles in this page:"
+source ./.env || exit 1
 
 function capitalize() {
   echo $@ | sed 's/[a-z]/\U&/'

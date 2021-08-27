@@ -1,20 +1,18 @@
-ASSETS_DIR=assets
-STORAGE_DIR=assets/storage
-PUBLIC_DIR=public
-SRC_DIR=src
+include .env
 
 build: html format
 
 clean:
-	find ${PUBLIC_DIR} -not -iname 'storage' -delete
 	find ${SRC_DIR} -type f -iname 'index.md' -delete
+	find ${PUBLIC_DIR} ! -iname 'storage' ! -iwholename ${PUBLIC_DIR} -delete
+	-rm Makefile2
 
 format:
 	find ${PUBLIC_DIR} -type f -iname "*.html" -exec vim -c "normal gg=G" -c "x" '{}' \;
 
-html: html_template html_files
+html: indexes html_template html_files
 
-html_template: assets/app.css
+html_template: ${CSS_FILE}
 	./maketemplate.sh
 
 html_files: makefile

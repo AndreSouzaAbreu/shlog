@@ -1,16 +1,14 @@
 #!/bin/sh
-PUBLIC_DIR=public
-SRC_DIR=src
+source ./.env || exit 1
+
 makefile=Makefile2
-cssfile=assets/app.css
-all=''
 
 echo -e "# automatically generated makefile
 
-all_files: all
+all: all_files
 " > $makefile
 
-echo -n "all:" > $makefile.tmp
+echo -n "all_files:" > $makefile.tmp
 
 find ${SRC_DIR} -type f -iname '*.md' | sort |
 while read sourcefile; do
